@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 
+import { Container } from "./styles";
+import Controls from "./components/Controls";
+
 function App() {
   const DEFAULT_SLOT_AMOUNT = 50;
 
@@ -15,7 +18,19 @@ function App() {
     setSlots(defaultSlots);
   }, []);
 
-  return <div className="App"></div>;
+  function changeSlotAmount(amount) {
+    let updatedSlots = [];
+    for (let index = 0; index < amount; index++) {
+      updatedSlots.push(null);
+    }
+    setSlots(updatedSlots);
+  }
+
+  return (
+    <Container>
+      <Controls changeSlotAmount={changeSlotAmount} />
+    </Container>
+  );
 }
 
 export default App;
