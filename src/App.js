@@ -3,6 +3,7 @@ import { DragDropContext } from "react-beautiful-dnd";
 
 import { Container } from "./styles";
 import Controls from "./components/Controls";
+import NumberSlotsContainer from "./components/NumberSlotsContainer";
 import NumberSlot from "./components/NumberSlot";
 
 function App() {
@@ -33,10 +34,13 @@ function App() {
       <Controls changeSlotAmount={changeSlotAmount} />
       <div className="application">
         <DragDropContext
-          <NumberSlot index={1} number={null} key={1} />
-          <NumberSlot index={2} number={null} key={2} />
-          <NumberSlot index={3} number={3} key={3} />
-          <NumberSlot index={4} number={null} key={4} />
+          onDragEnd={event => console.log(event)}
+        >
+          <NumberSlotsContainer
+            slots={slots}
+            showNumbers={showNumbers}
+            className="slots"
+          />
         </DragDropContext>
       </div>
     </Container>
