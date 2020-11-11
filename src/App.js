@@ -3,6 +3,7 @@ import { DragDropContext } from "react-beautiful-dnd";
 
 import { Container } from "./styles";
 import Controls from "./components/Controls";
+import SpareNumbersContainer from "./components/SpareNumbersContainer";
 import NumberSlotsContainer from "./components/NumberSlotsContainer";
 import NumberSlot from "./components/NumberSlot";
 
@@ -41,6 +42,7 @@ function App() {
             showNumbers={showNumbers}
             className="slots"
           />
+          <SpareNumbersContainer numbers={spareNumbers} className="spare" />
         </DragDropContext>
       </div>
     </Container>
