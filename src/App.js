@@ -5,7 +5,7 @@ import { Container } from "./styles";
 import Controls from "./components/Controls";
 import SpareNumbersContainer from "./components/SpareNumbersContainer";
 import NumberSlotsContainer from "./components/NumberSlotsContainer";
-import NumberSlot from "./components/NumberSlot";
+import dragEndController from "./controllers/dragEndController";
 
 function App() {
   const DEFAULT_SLOT_AMOUNT = 50;
@@ -36,6 +36,15 @@ function App() {
       <div className="application">
         <DragDropContext
           onDragEnd={event => console.log(event)}
+          onDragEnd={event => {
+            setDraggingNumber("");
+            dragEndController(event, {
+              slots: slots,
+              setSlots: setSlots,
+              spareNumbers: spareNumbers,
+              setSpareNumbers: setSpareNumbers,
+            });
+          }}
         >
           <NumberSlotsContainer
             slots={slots}
