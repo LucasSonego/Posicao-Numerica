@@ -6,7 +6,7 @@ import { Container } from "./styles";
 function Number({ index, number }) {
   return (
     <Draggable draggableId={`${index}`} index={index}>
-      {(provided) => (
+      {provided => (
         <Container
           ref={provided.innerRef}
           {...provided.dragHandleProps}

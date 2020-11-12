@@ -4,8 +4,6 @@ import NumberSlot from "../NumberSlot";
 import { Container } from "./styles";
 
 function NumberSlotsContainer({ slots, showNumbers, dragging }) {
-  console.log(dragging);
-
   return (
     <Container showNumbers={showNumbers}>
       {slots.map((number, index) => (
@@ -13,7 +11,7 @@ function NumberSlotsContainer({ slots, showNumbers, dragging }) {
           index={index}
           number={number}
           key={index}
-          dragging={`${index}` === dragging}
+          dragging={dragging}
         />
       ))}
     </Container>

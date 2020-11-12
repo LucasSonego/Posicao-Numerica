@@ -11,7 +11,7 @@ function NumberSlot({ index, number, dragging }) {
       index={index}
       isCombineEnabled={true}
       direction="horizontal"
-      isDropDisabled={!!number && !dragging}
+      isDropDisabled={(number && dragging && dragging !== index) || false}
     >
       {provided => (
         <Container ref={provided.innerRef} {...provided.droppableProps}>

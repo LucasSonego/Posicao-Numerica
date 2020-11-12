@@ -6,6 +6,7 @@ import Controls from "./components/Controls";
 import SpareNumbersContainer from "./components/SpareNumbersContainer";
 import NumberSlotsContainer from "./components/NumberSlotsContainer";
 import dragEndController from "./controllers/dragEndController";
+import dragStartController from "./controllers/dragStartController";
 
 function App() {
   const DEFAULT_SLOT_AMOUNT = 50;
@@ -13,6 +14,7 @@ function App() {
   const [slots, setSlots] = useState([]);
   const [spareNumbers, setSpareNumbers] = useState([1, 2, 3, 4, 5]);
   const [showNumbers, setShowNumbers] = useState(false);
+  const [dragging, setDragging] = useState(null);
 
   useEffect(() => {
     let defaultSlots = [];
@@ -35,9 +37,14 @@ function App() {
       <Controls changeSlotAmount={changeSlotAmount} />
       <div className="application">
         <DragDropContext
-          onDragEnd={event => console.log(event)}
+          onDragStart={event =>
+            dragStartController(event, {
+              slots,
+              setDragging: setDragging,
+            })
+          }
           onDragEnd={event => {
-            setDraggingNumber("");
+            setDragging(null);
             dragEndController(event, {
               slots: slots,
               setSlots: setSlots,
@@ -49,6 +56,7 @@ function App() {
           <NumberSlotsContainer
             slots={slots}
             showNumbers={showNumbers}
+            dragging={dragging}
             className="slots"
           />
           <SpareNumbersContainer numbers={spareNumbers} className="spare" />
