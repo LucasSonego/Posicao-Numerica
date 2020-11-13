@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BsFillGearFill } from "react-icons/bs";
+import Range from "./Range";
 
 import { Container, ControlsContainer, Backdrop } from "./styles";
 
@@ -19,8 +20,7 @@ function Controls({ changeSlotAmount }) {
         <div className="size-controller">
           <p>Quantidade de números</p>
           <div className="range">
-            <input
-              type="range"
+            <Range
               min="1"
               max="10"
               defaultValue="5"
