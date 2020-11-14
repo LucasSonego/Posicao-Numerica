@@ -10,7 +10,7 @@ export const Container = styled.div`
   border-radius: 10px;
 
   ${props =>
-    props.showNumbers
+    props.showCorrectNumbers
       ? css`
           .correct-number {
             display: block;

@@ -92,6 +92,19 @@ export const ControlsContainer = styled.div`
       margin-left: 20px;
     }
   }
+
+  .toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+
+    span {
+      color: #718093;
+      font-family: inherit;
+      font-weight: 500;
+    }
+  }
 `;
 
 export const Backdrop = styled.div`

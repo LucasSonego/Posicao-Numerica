@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { BsFillGearFill } from "react-icons/bs";
-import Range from "./Range";
 
 import { Container, ControlsContainer, Backdrop } from "./styles";
+import Range from "./Range";
+import Toggle from "./Toggle";
 
-function Controls({ changeSlotAmount }) {
+function Controls({
+  changeSlotAmount,
+  showCorrectNumbers,
+  setShowCorrectNumbers,
+}) {
   const [expanded, setExpanded] = useState(false);
   const [size, setSize] = useState(5);
 
@@ -31,6 +36,10 @@ function Controls({ changeSlotAmount }) {
           <button onClick={() => changeSlotAmount(size * 10)}>
             Alterar tamanho
           </button>
+        </div>
+        <div className="toggle">
+          <span>Exibir o número correto para cada posição</span>
+          <Toggle value={showCorrectNumbers} setValue={setShowCorrectNumbers} />
         </div>
       </ControlsContainer>
       {expanded && (

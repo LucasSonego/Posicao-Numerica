@@ -4,7 +4,9 @@ export const Container = styled.div`
   cursor: pointer;
   background-color: #dcdde1;
   height: 28px;
+  min-height: 28px !important;
   width: 48px;
+  min-width: 48px !important;
   border-radius: 20px;
   padding: 4px;
   box-sizing: border-box;

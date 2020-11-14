@@ -13,7 +13,7 @@ function App() {
 
   const [slots, setSlots] = useState([]);
   const [spareNumbers, setSpareNumbers] = useState([1, 2, 3, 4, 5]);
-  const [showNumbers, setShowNumbers] = useState(false);
+  const [showCorrectNumbers, setShowCorrectNumbers] = useState(false);
   const [dragging, setDragging] = useState(null);
 
   useEffect(() => {
@@ -34,7 +34,11 @@ function App() {
 
   return (
     <Container>
-      <Controls changeSlotAmount={changeSlotAmount} />
+      <Controls
+        changeSlotAmount={changeSlotAmount}
+        showCorrectNumbers={showCorrectNumbers}
+        setShowCorrectNumbers={setShowCorrectNumbers}
+      />
       <div className="application">
         <DragDropContext
           onDragStart={event =>
@@ -55,7 +59,7 @@ function App() {
         >
           <NumberSlotsContainer
             slots={slots}
-            showNumbers={showNumbers}
+            showCorrectNumbers={showCorrectNumbers}
             dragging={dragging}
             className="slots"
           />
