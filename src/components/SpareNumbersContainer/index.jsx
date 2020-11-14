@@ -11,7 +11,7 @@ function NewNumbersContainer({ numbers }) {
         <Container ref={provided.innerRef} {...provided.droppableProps}>
           <div className="numbers">
             {numbers.map((number, index) => (
-              <Number index={index} number={number} key={index} />
+              <Number index={index} number={number + 1} key={index} />
             ))}
           </div>
           {provided.placeholder}

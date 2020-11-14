@@ -17,10 +17,10 @@ function NumberSlot({ index, number, dragging }) {
         <Container ref={provided.innerRef} {...provided.droppableProps}>
           {number ? (
             <div className={number === index ? "number" : "number wrong"}>
-              <Number index={index + 1000} number={number} key={index} />
             </div>
+            <Number index={index + 1000} number={number + 1} key={index} />
           ) : (
-            <div className="correct-number">{index}</div>
+            <div className="correct-number">{index + 1}</div>
           )}
           {provided.placeholder}
         </Container>
