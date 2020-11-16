@@ -3,7 +3,10 @@ export default function dragEndController(
   { slots, setSlots, spareNumbers, setSpareNumbers }
 ) {
   if (event.source.droppableId === "spare-numbers") {
-    if (event.destination?.droppableId) {
+    if (
+      event.destination?.droppableId &&
+      slots[event.destination?.droppableId] === null
+    ) {
       let updatedSpareNumbers = [...spareNumbers];
       let updatedSlots = [...slots];
 
@@ -16,7 +19,11 @@ export default function dragEndController(
       setSlots(updatedSlots);
     }
   } else {
-    if (event.destination?.droppableId) {
+    if (
+      (event.destination?.droppableId &&
+        slots[event.destination?.droppableId] === null) ||
+      event.destination?.droppableId === event.source?.droppableId
+    ) {
       if (event.destination.droppableId !== event.source.droppableId) {
         let updatedSlots = [...slots];
         updatedSlots[event.destination.droppableId] =
