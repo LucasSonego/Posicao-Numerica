@@ -14,10 +14,12 @@ function NumberSlot({ index, number, dragging }) {
       isDropDisabled={(number && dragging && dragging !== index) || false}
     >
       {provided => (
-        <Container ref={provided.innerRef} {...provided.droppableProps}>
+        <Container
+          ref={provided.innerRef}
+          {...provided.droppableProps}
+          className={number !== null && index !== number ? "wrong-number" : ""}
+        >
           {number ? (
-            <div className={number === index ? "number" : "number wrong"}>
-            </div>
             <Number index={index + 1000} number={number + 1} key={index} />
           ) : (
             <div className="correct-number">{index + 1}</div>

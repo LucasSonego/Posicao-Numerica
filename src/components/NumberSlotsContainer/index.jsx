@@ -3,9 +3,17 @@ import NumberSlot from "../NumberSlot";
 
 import { Container } from "./styles";
 
-function NumberSlotsContainer({ slots, showNumbers, dragging }) {
+function NumberSlotsContainer({
+  slots,
+  showCorrectNumbers,
+  dragging,
+  showMistakes,
+}) {
   return (
-    <Container showNumbers={showNumbers}>
+    <Container
+      showCorrectNumbers={showCorrectNumbers}
+      showMistakes={showMistakes}
+    >
       {slots.map((number, index) => (
         <NumberSlot
           index={index}

@@ -9,6 +9,8 @@ function Controls({
   changeSlotAmount,
   showCorrectNumbers,
   setShowCorrectNumbers,
+  showMistakes,
+  setShowMistakes,
 }) {
   const [expanded, setExpanded] = useState(false);
   const [size, setSize] = useState(5);
@@ -40,6 +42,10 @@ function Controls({
         <div className="toggle">
           <span>Exibir o número correto para cada posição</span>
           <Toggle value={showCorrectNumbers} setValue={setShowCorrectNumbers} />
+        </div>
+        <div className="toggle">
+          <span>Destacar números posicionados incorretamente</span>
+          <Toggle value={showMistakes} setValue={setShowMistakes} />
         </div>
       </ControlsContainer>
       {expanded && (

@@ -21,4 +21,16 @@ export const Container = styled.div`
             display: none;
           }
         `}
+  ${props =>
+    props.showMistakes
+      ? css`
+          .wrong-number {
+            background-color: #fbc531;
+          }
+        `
+      : css`
+          .wrong-number {
+            background-color: #f5f6fa;
+          }
+        `}
 `;
