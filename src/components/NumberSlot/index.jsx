@@ -11,7 +11,9 @@ function NumberSlot({ index, number, dragging }) {
       index={index}
       isCombineEnabled={true}
       direction="horizontal"
-      isDropDisabled={(number && dragging && dragging !== index) || false}
+      isDropDisabled={
+        (number !== null && dragging && dragging !== index) || false
+      }
     >
       {provided => (
         <Container
@@ -19,7 +21,7 @@ function NumberSlot({ index, number, dragging }) {
           {...provided.droppableProps}
           className={number !== null && index !== number ? "wrong-number" : ""}
         >
-          {number ? (
+          {number !== null ? (
             <Number index={index + 1000} number={number + 1} key={index} />
           ) : (
             <div className="correct-number">{index + 1}</div>
