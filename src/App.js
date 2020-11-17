@@ -12,25 +12,54 @@ function App() {
   const DEFAULT_SLOT_AMOUNT = 50;
 
   const [slots, setSlots] = useState([]);
-  const [spareNumbers, setSpareNumbers] = useState([1, 2, 3, 4, 5]);
+  const [spareNumbers, setSpareNumbers] = useState([]);
+  const [unlistedNumbers, setUnlistedNumbers] = useState([]);
   const [showCorrectNumbers, setShowCorrectNumbers] = useState(false);
   const [showMistakes, setShowMistakes] = useState(false);
   const [dragging, setDragging] = useState(null);
 
   useEffect(() => {
     let defaultSlots = [];
+    let defaultUnlistedNumbers = [];
     for (let index = 0; index < DEFAULT_SLOT_AMOUNT; index++) {
       defaultSlots.push(null);
+      defaultUnlistedNumbers.push(index);
     }
     setSlots(defaultSlots);
+    let randomNumber = defaultUnlistedNumbers.splice(
+      parseInt(Math.random() * defaultUnlistedNumbers.length),
+      1
+    )[0];
+    setUnlistedNumbers(defaultUnlistedNumbers);
+    setSpareNumbers([randomNumber]);
   }, []);
+
+  function generateRandomNumber() {
+    if (unlistedNumbers.length > 0) {
+      let updatedUnlistedNumbers = [...unlistedNumbers];
+      let randomNumber = updatedUnlistedNumbers.splice(
+        parseInt(Math.random() * updatedUnlistedNumbers.length),
+        1
+      )[0];
+      setUnlistedNumbers([...updatedUnlistedNumbers]);
+      setSpareNumbers([randomNumber]);
+    }
+  }
 
   function changeSlotAmount(amount) {
     let updatedSlots = [];
+    let updatedUnlistedNumbers = [];
     for (let index = 0; index < amount; index++) {
       updatedSlots.push(null);
+      updatedUnlistedNumbers.push(index);
     }
+    let randomNumber = updatedUnlistedNumbers.splice(
+      parseInt(Math.random() * updatedUnlistedNumbers.length),
+      1
+    )[0];
     setSlots(updatedSlots);
+    setUnlistedNumbers([...updatedUnlistedNumbers]);
+    setSpareNumbers([randomNumber]);
   }
 
   return (
@@ -57,6 +86,7 @@ function App() {
               setSlots: setSlots,
               spareNumbers: spareNumbers,
               setSpareNumbers: setSpareNumbers,
+              generateRandomNumber: generateRandomNumber,
             });
           }}
         >

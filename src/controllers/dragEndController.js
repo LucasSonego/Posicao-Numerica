@@ -1,6 +1,6 @@
 export default function dragEndController(
   event,
-  { slots, setSlots, spareNumbers, setSpareNumbers }
+  { slots, setSlots, spareNumbers, setSpareNumbers, generateRandomNumber }
 ) {
   if (event.source.droppableId === "spare-numbers") {
     if (
@@ -17,6 +17,10 @@ export default function dragEndController(
 
       setSpareNumbers(updatedSpareNumbers);
       setSlots(updatedSlots);
+
+      if (updatedSpareNumbers.length === 0) {
+        generateRandomNumber();
+      }
     }
   } else {
     if (
