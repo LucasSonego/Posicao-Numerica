@@ -63,7 +63,7 @@ function App() {
   }
 
   return (
-    <Container>
+    <Container largeScreen={window.screen.availWidth > 1400}>
       <Controls
         changeSlotAmount={changeSlotAmount}
         showCorrectNumbers={showCorrectNumbers}
