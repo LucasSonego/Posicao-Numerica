@@ -17,6 +17,7 @@ function App() {
   const [showCorrectNumbers, setShowCorrectNumbers] = useState(false);
   const [showMistakes, setShowMistakes] = useState(false);
   const [dragging, setDragging] = useState(null);
+  const [allSlotsCorrect, setAllSlotsCorrect] = useState(true);
 
   useEffect(() => {
     let defaultSlots = [];
@@ -87,6 +88,8 @@ function App() {
               spareNumbers: spareNumbers,
               setSpareNumbers: setSpareNumbers,
               generateRandomNumber: generateRandomNumber,
+              validateSlots: unlistedNumbers.length === 0,
+              onAllSlotsCorrect: () => setAllSlotsCorrect(true),
             });
           }}
         >

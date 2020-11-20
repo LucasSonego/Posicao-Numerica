@@ -1,7 +1,28 @@
 export default function dragEndController(
   event,
-  { slots, setSlots, spareNumbers, setSpareNumbers, generateRandomNumber }
+  {
+    slots,
+    setSlots,
+    spareNumbers,
+    setSpareNumbers,
+    generateRandomNumber,
+    validateSlots,
+    onAllSlotsCorrect,
+  }
 ) {
+  function validate(slotsState) {
+    let mistakes = 0;
+    slotsState.map((number, index) => {
+      if (number !== index) {
+        mistakes++;
+      }
+      return true;
+    });
+    if (mistakes === 0) {
+      onAllSlotsCorrect();
+    }
+  }
+
   if (event.source.droppableId === "spare-numbers") {
     if (
       event.destination?.droppableId &&
@@ -17,6 +38,8 @@ export default function dragEndController(
 
       setSpareNumbers(updatedSpareNumbers);
       setSlots(updatedSlots);
+
+      validateSlots && validate(updatedSlots);
 
       if (updatedSpareNumbers.length === 0) {
         generateRandomNumber();
