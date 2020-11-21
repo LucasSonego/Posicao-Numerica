@@ -30,4 +30,63 @@ export const Container = styled.div`
             justify-content: space-around;
           }
         `}
+  .modal-content {
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    h3 {
+      margin: 0;
+      padding: 0;
+      color: #444;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        outline: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        width: 150px;
+        font-family: inherit;
+        font-size: 16px;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+
+        transition: 0.3s;
+        &:hover {
+          opacity: 0.9;
+        }
+
+        span {
+          margin-right: 10px;
+        }
+      }
+
+      .restart {
+        background-color: #44bd32;
+        svg {
+          height: 18px;
+          width: 18px;
+          margin-right: 10px;
+        }
+      }
+
+      .options {
+        svg {
+          height: 16px;
+          width: 16px;
+          margin-right: 10px;
+        }
+        background-color: #0097e6;
+      }
+    }
+  }
 `;

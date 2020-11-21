@@ -11,8 +11,9 @@ function Controls({
   setShowCorrectNumbers,
   showMistakes,
   setShowMistakes,
+  expanded,
+  setExpanded,
 }) {
-  const [expanded, setExpanded] = useState(false);
   const [size, setSize] = useState(5);
 
   return (
