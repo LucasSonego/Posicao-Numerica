@@ -23,6 +23,9 @@ function App() {
   const [allSlotsCorrect, setAllSlotsCorrect] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
 
+  const [startTime, setStartTime] = useState();
+  const [endTime, setEndTime] = useState();
+
   useEffect(() => {
     let defaultSlots = [];
     let defaultUnlistedNumbers = [];
@@ -65,6 +68,17 @@ function App() {
     setSlots(updatedSlots);
     setUnlistedNumbers([...updatedUnlistedNumbers]);
     setSpareNumbers([randomNumber]);
+    setStartTime(null);
+    setEndTime(null);
+  }
+
+  function formatTime(time) {
+    let fixedTime = Number(time).toFixed();
+    let minutes = Math.floor(fixedTime / 60);
+    if (minutes > 0) {
+      fixedTime = fixedTime - minutes * 60;
+    }
+    return `${minutes}:${fixedTime}`;
   }
 
   return (
@@ -81,6 +95,7 @@ function App() {
       <Modal visible={allSlotsCorrect} hide={() => setAllSlotsCorrect(false)}>
         <div className="modal-content">
           <h3>Atividade completa!</h3>
+          <h4>Tempo: {formatTime((endTime - startTime) / 1000)}</h4>
           <div className="buttons">
             <button
               className="restart"
@@ -107,12 +122,13 @@ function App() {
       </Modal>
       <div className="application">
         <DragDropContext
-          onDragStart={event =>
+          onDragStart={event => {
             dragStartController(event, {
               slots,
               setDragging: setDragging,
-            })
-          }
+            });
+            !startTime && setStartTime(Date.now());
+          }}
           onDragEnd={event => {
             setDragging(null);
             dragEndController(event, {
@@ -122,7 +138,10 @@ function App() {
               setSpareNumbers: setSpareNumbers,
               generateRandomNumber: generateRandomNumber,
               validateSlots: unlistedNumbers.length === 0,
-              onAllSlotsCorrect: () => setAllSlotsCorrect(true),
+              onAllSlotsCorrect: () => {
+                setAllSlotsCorrect(true);
+                setEndTime(Date.now());
+              },
             });
           }}
         >

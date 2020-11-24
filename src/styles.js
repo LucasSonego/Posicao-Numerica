@@ -31,7 +31,7 @@ export const Container = styled.div`
           }
         `}
   .modal-content {
-    height: 100%;
+    height: 150px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -40,6 +40,11 @@ export const Container = styled.div`
       margin: 0;
       padding: 0;
       color: #444;
+    }
+    h4 {
+      margin: 0;
+      color: #777;
+      margin-bottom: 10px;
     }
     .buttons {
       display: flex;
