@@ -55,9 +55,16 @@ function App() {
   }
 
   function clearGrid(size) {
+    let slotAmount;
+    if (size) {
+      slotAmount = size;
+    } else {
+      slotAmount = slots.length;
+    }
+
     let updatedSlots = [];
     let updatedUnlistedNumbers = [];
-    for (let index = 0; index < size; index++) {
+    for (let index = 0; index < slotAmount; index++) {
       updatedSlots.push(null);
       updatedUnlistedNumbers.push(index);
     }
@@ -84,7 +91,7 @@ function App() {
   return (
     <Container largeScreen={window.screen.availWidth > 1400}>
       <Controls
-        changeSlotAmount={clearGrid}
+        clearGrid={clearGrid}
         showCorrectNumbers={showCorrectNumbers}
         setShowCorrectNumbers={setShowCorrectNumbers}
         showMistakes={showMistakes}
@@ -100,7 +107,7 @@ function App() {
             <button
               className="restart"
               onClick={() => {
-                clearGrid(slots.length);
+                clearGrid();
                 setAllSlotsCorrect(false);
               }}
             >

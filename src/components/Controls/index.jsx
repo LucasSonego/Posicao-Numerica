@@ -6,7 +6,7 @@ import Range from "./Range";
 import Toggle from "./Toggle";
 
 function Controls({
-  changeSlotAmount,
+  clearGrid,
   showCorrectNumbers,
   setShowCorrectNumbers,
   showMistakes,
@@ -36,9 +36,7 @@ function Controls({
             />
             <span>{size * 10}</span>
           </div>
-          <button onClick={() => changeSlotAmount(size * 10)}>
-            Alterar tamanho
-          </button>
+          <button onClick={() => clearGrid(size * 10)}>Alterar tamanho</button>
         </div>
         <div className="toggle">
           <span>Exibir o número correto para cada posição</span>
