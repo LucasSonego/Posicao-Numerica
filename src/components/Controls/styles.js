@@ -38,8 +38,30 @@ export const ControlsContainer = styled.div`
   width: 400px;
   padding: 40px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 
   background-color: #f5f6fa;
+
+  button {
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    padding: 15px 25px;
+    font-size: 16px;
+    font-family: inherit;
+    font-weight: 500;
+    color: #fff;
+    background: #00a8ff;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+
+    transition: 0.5s;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 
   ${props =>
     props.expanded
@@ -59,26 +81,6 @@ export const ControlsContainer = styled.div`
       font-size: 16px;
       font-weight: bold;
       color: #718093;
-    }
-
-    button {
-      margin-top: 20px;
-      border: none;
-      outline: none;
-      padding: 15px 25px;
-      font-size: 16px;
-      font-family: inherit;
-      font-weight: 500;
-      color: #fff;
-      background: #00a8ff;
-      border-radius: 8px;
-      width: 100%;
-      cursor: pointer;
-
-      transition: 0.5s;
-      &:hover {
-        opacity: 0.8;
-      }
     }
   }
 
@@ -103,6 +105,23 @@ export const ControlsContainer = styled.div`
       color: #718093;
       font-family: inherit;
       font-weight: 500;
+    }
+  }
+
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg {
+        height: 20px;
+        width: 20px;
+        margin-right: 15px;
+      }
     }
   }
 `;

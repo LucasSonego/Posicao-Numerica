@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BsFillGearFill } from "react-icons/bs";
+import { MdRefresh } from "react-icons/md";
 
 import { Container, ControlsContainer, Backdrop } from "./styles";
 import Range from "./Range";
@@ -45,6 +46,11 @@ function Controls({
         <div className="toggle">
           <span>Destacar números posicionados incorretamente</span>
           <Toggle value={showMistakes} setValue={setShowMistakes} />
+        </div>
+        <div className="bottom">
+          <button onClick={() => clearGrid()}>
+            <MdRefresh /> Reiniciar
+          </button>
         </div>
       </ControlsContainer>
       {expanded && (
