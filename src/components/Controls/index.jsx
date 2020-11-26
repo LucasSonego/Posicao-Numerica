@@ -14,6 +14,7 @@ function Controls({
   setShowMistakes,
   expanded,
   setExpanded,
+  time,
 }) {
   const [size, setSize] = useState(5);
 
@@ -48,6 +49,7 @@ function Controls({
           <Toggle value={showMistakes} setValue={setShowMistakes} />
         </div>
         <div className="bottom">
+          {time && <span className="time">Tempo: {time}</span>}
           <button onClick={() => clearGrid()}>
             <MdRefresh /> Reiniciar
           </button>

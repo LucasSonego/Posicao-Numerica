@@ -113,6 +113,11 @@ export const ControlsContainer = styled.div`
     flex-direction: column;
     margin-top: auto;
 
+    .time {
+      font-weight: bold;
+      color: #555;
+    }
+
     button {
       display: flex;
       align-items: center;

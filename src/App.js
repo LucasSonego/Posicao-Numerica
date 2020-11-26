@@ -98,6 +98,7 @@ function App() {
         setShowMistakes={setShowMistakes}
         expanded={showOptions}
         setExpanded={setShowOptions}
+        time={startTime && endTime && formatTime((endTime - startTime) / 1000)}
       />
       <Modal visible={allSlotsCorrect} hide={() => setAllSlotsCorrect(false)}>
         <div className="modal-content">
