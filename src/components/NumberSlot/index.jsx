@@ -12,7 +12,8 @@ function NumberSlot({ index, number, dragging }) {
       isCombineEnabled={true}
       direction="horizontal"
       isDropDisabled={
-        (number !== null && dragging && dragging !== index) || false
+        (number !== null && (!dragging || (dragging && dragging !== index))) ||
+        false
       }
     >
       {provided => (

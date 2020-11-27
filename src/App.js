@@ -131,10 +131,7 @@ function App() {
       <div className="application">
         <DragDropContext
           onDragStart={event => {
-            dragStartController(event, {
-              slots,
-              setDragging: setDragging,
-            });
+            dragStartController(event, setDragging);
             !startTime && setStartTime(Date.now());
           }}
           onDragEnd={event => {
