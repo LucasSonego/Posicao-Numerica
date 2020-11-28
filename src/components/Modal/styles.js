@@ -21,7 +21,7 @@ export const Container = styled.div`
             top: 50%;
           `
         : css`
-            top: -20%;
+            top: -120%;
           `}
   }
 
