@@ -1,13 +1,21 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+import { gridStyles } from "../../globalStyles/gridStyles";
 
 export const Container = styled.div`
-  height: 52px;
-  min-height: 52px;
-  max-height: 52px;
+  height: ${`${gridStyles.default.numberSize}px`};
+  width: ${`${gridStyles.default.numberSize}px`};
+  min-height: ${`${gridStyles.default.numberSize}px`};
+  min-width: ${`${gridStyles.default.numberSize}px`};
 
-  width: 52px;
-  min-width: 52px;
-  max-width: 52px;
+  ${props =>
+    props.smallLayout &&
+    css`
+      height: ${`${gridStyles.small.numberSize}px`};
+      width: ${`${gridStyles.small.numberSize}px`};
+      min-height: ${`${gridStyles.small.numberSize}px`};
+      min-width: ${`${gridStyles.small.numberSize}px`};
+    `}
 
   background: #fff;
   border: 1px solid #999;

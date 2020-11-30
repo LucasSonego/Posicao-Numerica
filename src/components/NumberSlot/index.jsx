@@ -4,7 +4,7 @@ import Number from "../Number";
 
 import { Container } from "./styles";
 
-function NumberSlot({ index, number, dragging }) {
+function NumberSlot({ index, number, dragging, smallLayout }) {
   return (
     <Droppable
       droppableId={`${index}`}
@@ -20,10 +20,16 @@ function NumberSlot({ index, number, dragging }) {
         <Container
           ref={provided.innerRef}
           {...provided.droppableProps}
+          smallLayout={smallLayout}
           className={number !== null && index !== number ? "wrong-number" : ""}
         >
           {number !== null ? (
-            <Number index={index + 1000} number={number + 1} key={index} />
+            <Number
+              index={index + 1000}
+              number={number + 1}
+              key={index}
+              smallLayout={smallLayout}
+            />
           ) : (
             <div className="correct-number">{index + 1}</div>
           )}

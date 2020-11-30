@@ -4,6 +4,7 @@ import { MdRefresh } from "react-icons/md";
 import { BsFillGearFill } from "react-icons/bs";
 
 import { Container } from "./styles";
+import { gridStyles } from "./globalStyles/gridStyles";
 import Controls from "./components/Controls";
 import SpareNumbersContainer from "./components/SpareNumbersContainer";
 import NumberSlotsContainer from "./components/NumberSlotsContainer";
@@ -156,8 +157,21 @@ function App() {
             showMistakes={showMistakes}
             dragging={dragging}
             className="slots"
+            smallLayout={
+              window.innerHeight <
+              (slots.length / 10) * gridStyles.default.slotSize +
+                gridStyles.default.gridPadding * 2
+            }
           />
-          <SpareNumbersContainer numbers={spareNumbers} className="spare" />
+          <SpareNumbersContainer
+            numbers={spareNumbers}
+            className="spare"
+            smallLayout={
+              window.innerHeight <
+              (slots.length / 10) * gridStyles.default.slotSize +
+                gridStyles.default.gridPadding * 2
+            }
+          />
         </DragDropContext>
       </div>
     </Container>

@@ -8,11 +8,13 @@ function NumberSlotsContainer({
   showCorrectNumbers,
   dragging,
   showMistakes,
+  smallLayout,
 }) {
   return (
     <Container
       showCorrectNumbers={showCorrectNumbers}
       showMistakes={showMistakes}
+      smallLayout={smallLayout}
     >
       {slots.map((number, index) => (
         <NumberSlot
@@ -20,6 +22,7 @@ function NumberSlotsContainer({
           number={number}
           key={index}
           dragging={dragging}
+          smallLayout={smallLayout}
         />
       ))}
     </Container>
