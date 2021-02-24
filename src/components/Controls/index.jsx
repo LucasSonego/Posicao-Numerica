@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BsFillGearFill } from "react-icons/bs";
 import { MdRefresh } from "react-icons/md";
+import { RiMenuFoldLine } from "react-icons/ri";
 
 import { Container, ControlsContainer, Backdrop } from "./styles";
 import Range from "./Range";
@@ -20,13 +21,13 @@ function Controls({
 
   return (
     <Container>
-      <button
-        className="toggle-controls"
-        onClick={() => (expanded ? setExpanded(false) : setExpanded(true))}
-      >
+      <button className="toggle-controls" onClick={() => setExpanded(true)}>
         <BsFillGearFill />
       </button>
       <ControlsContainer expanded={expanded}>
+        <button className="close" onClick={() => setExpanded(false)}>
+          <RiMenuFoldLine />
+        </button>
         <div className="size-controller">
           <p>Quantidade de números</p>
           <div className="range">

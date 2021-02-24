@@ -32,14 +32,17 @@ export const Container = styled.div`
 export const ControlsContainer = styled.div`
   transition: 0.3s ease-in-out;
   z-index: 995;
-  overflow: hidden;
   position: absolute;
   height: 100vh;
   width: 400px;
-  padding: 40px;
+  padding: 10px 40px 40px 40px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+
+  @media (max-height: 498px) {
+    overflow-y: scroll;
+  }
 
   background-color: #f5f6fa;
 
@@ -63,6 +66,21 @@ export const ControlsContainer = styled.div`
     }
   }
 
+  .close {
+    height: min-content;
+    width: 50px;
+    margin-left: auto;
+    margin-top: 0;
+    background: #7771;
+    padding: 10px;
+
+    svg {
+      color: #777;
+      height: 24px;
+      width: 24px;
+    }
+  }
+
   ${props =>
     props.expanded
       ? css`
@@ -78,6 +96,7 @@ export const ControlsContainer = styled.div`
     flex-direction: column;
     width: 100%;
     p {
+      margin-top: 0px;
       font-size: 16px;
       font-weight: bold;
       color: #718093;
@@ -112,6 +131,7 @@ export const ControlsContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: auto;
+    padding-top: 30px;
 
     .time {
       font-weight: bold;
