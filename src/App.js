@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
-import { MdRefresh } from "react-icons/md";
+import { MdRefresh, MdScreenRotation } from "react-icons/md";
 import { BsFillGearFill } from "react-icons/bs";
 
-import { Container } from "./styles";
+import { Container, Rotate } from "./styles";
 import { gridStyles } from "./globalStyles/gridStyles";
 import Controls from "./components/Controls";
 import SpareNumbersContainer from "./components/SpareNumbersContainer";
@@ -90,91 +90,100 @@ function App() {
   }
 
   return (
-    <Container largeScreen={window.screen.availWidth > 1400}>
-      <Controls
-        clearGrid={clearGrid}
-        showCorrectNumbers={showCorrectNumbers}
-        setShowCorrectNumbers={setShowCorrectNumbers}
-        showMistakes={showMistakes}
-        setShowMistakes={setShowMistakes}
-        expanded={showOptions}
-        setExpanded={setShowOptions}
-        time={startTime && endTime && formatTime((endTime - startTime) / 1000)}
-      />
-      <Modal visible={allSlotsCorrect} hide={() => setAllSlotsCorrect(false)}>
-        <div className="modal-content">
-          <h3>Atividade completa!</h3>
-          <h4>Tempo: {formatTime((endTime - startTime) / 1000)}</h4>
-          <div className="buttons">
-            <button
-              className="restart"
-              onClick={() => {
-                clearGrid();
-                setAllSlotsCorrect(false);
-              }}
-            >
-              <MdRefresh />
-              <span>Reiniciar</span>
-            </button>
-            <button
-              className="options"
-              onClick={() => {
-                setShowOptions(true);
-                setAllSlotsCorrect(false);
-              }}
-            >
-              <BsFillGearFill />
-              <span>Opções</span>
-            </button>
-          </div>
+    <>
+      <Rotate>
+        <div className="icon">
+          <MdScreenRotation />
         </div>
-      </Modal>
-      <div className="application">
-        <DragDropContext
-          onDragStart={event => {
-            dragStartController(event, setDragging);
-            !startTime && setStartTime(Date.now());
-          }}
-          onDragEnd={event => {
-            setDragging(null);
-            dragEndController(event, {
-              slots: slots,
-              setSlots: setSlots,
-              spareNumbers: spareNumbers,
-              setSpareNumbers: setSpareNumbers,
-              generateRandomNumber: generateRandomNumber,
-              validateSlots: unlistedNumbers.length === 0,
-              onAllSlotsCorrect: () => {
-                setAllSlotsCorrect(true);
-                setEndTime(Date.now());
-              },
-            });
-          }}
-        >
-          <NumberSlotsContainer
-            slots={slots}
-            showCorrectNumbers={showCorrectNumbers}
-            showMistakes={showMistakes}
-            dragging={dragging}
-            className="slots"
-            smallLayout={
-              window.innerHeight <
-              (slots.length / 10) * gridStyles.default.slotSize +
-                gridStyles.default.gridPadding * 2
-            }
-          />
-          <SpareNumbersContainer
-            numbers={spareNumbers}
-            className="spare"
-            smallLayout={
-              window.innerHeight <
-              (slots.length / 10) * gridStyles.default.slotSize +
-                gridStyles.default.gridPadding * 2
-            }
-          />
-        </DragDropContext>
-      </div>
-    </Container>
+      </Rotate>
+      <Container largeScreen={window.screen.availWidth > 1400}>
+        <Controls
+          clearGrid={clearGrid}
+          showCorrectNumbers={showCorrectNumbers}
+          setShowCorrectNumbers={setShowCorrectNumbers}
+          showMistakes={showMistakes}
+          setShowMistakes={setShowMistakes}
+          expanded={showOptions}
+          setExpanded={setShowOptions}
+          time={
+            startTime && endTime && formatTime((endTime - startTime) / 1000)
+          }
+        />
+        <Modal visible={allSlotsCorrect} hide={() => setAllSlotsCorrect(false)}>
+          <div className="modal-content">
+            <h3>Atividade completa!</h3>
+            <h4>Tempo: {formatTime((endTime - startTime) / 1000)}</h4>
+            <div className="buttons">
+              <button
+                className="restart"
+                onClick={() => {
+                  clearGrid();
+                  setAllSlotsCorrect(false);
+                }}
+              >
+                <MdRefresh />
+                <span>Reiniciar</span>
+              </button>
+              <button
+                className="options"
+                onClick={() => {
+                  setShowOptions(true);
+                  setAllSlotsCorrect(false);
+                }}
+              >
+                <BsFillGearFill />
+                <span>Opções</span>
+              </button>
+            </div>
+          </div>
+        </Modal>
+        <div className="application">
+          <DragDropContext
+            onDragStart={event => {
+              dragStartController(event, setDragging);
+              !startTime && setStartTime(Date.now());
+            }}
+            onDragEnd={event => {
+              setDragging(null);
+              dragEndController(event, {
+                slots: slots,
+                setSlots: setSlots,
+                spareNumbers: spareNumbers,
+                setSpareNumbers: setSpareNumbers,
+                generateRandomNumber: generateRandomNumber,
+                validateSlots: unlistedNumbers.length === 0,
+                onAllSlotsCorrect: () => {
+                  setAllSlotsCorrect(true);
+                  setEndTime(Date.now());
+                },
+              });
+            }}
+          >
+            <NumberSlotsContainer
+              slots={slots}
+              showCorrectNumbers={showCorrectNumbers}
+              showMistakes={showMistakes}
+              dragging={dragging}
+              className="slots"
+              smallLayout={
+                window.innerHeight <
+                (slots.length / 10) * gridStyles.default.slotSize +
+                  gridStyles.default.gridPadding * 2
+              }
+            />
+            <SpareNumbersContainer
+              numbers={spareNumbers}
+              className="spare"
+              smallLayout={
+                window.innerHeight <
+                (slots.length / 10) * gridStyles.default.slotSize +
+                  gridStyles.default.gridPadding * 2
+              }
+            />
+          </DragDropContext>
+        </div>
+      </Container>
+    </>
   );
 }
 

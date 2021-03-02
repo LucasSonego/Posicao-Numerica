@@ -1,6 +1,45 @@
 import styled, { css } from "styled-components";
 
+export const Rotate = styled.div`
+  @media screen and (orientation: landscape) {
+    display: none;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(45deg);
+    }
+    70% {
+      transform: rotate(-45deg);
+    }
+    100% {
+      transform: rotate(45deg);
+    }
+  }
+
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+
+  .icon {
+    width: min-content;
+    animation: rotate 2s infinite;
+  }
+
+  svg {
+    height: 70px;
+    width: 70px;
+    color: #555;
+  }
+`;
+
 export const Container = styled.div`
+  @media screen and (max-device-width: 640px) and (orientation: portrait) {
+    display: none;
+  }
+
   .application {
     display: flex;
     align-items: center;
