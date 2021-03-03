@@ -17,6 +17,13 @@ export const Container = styled.div`
       min-width: ${`${gridStyles.small.numberSize}px`};
     `}
 
+  @media screen and (max-device-height : 640px) and (orientation: landscape) {
+    height: ${`${gridStyles.extraSmall.numberSize}px`};
+    width: ${`${gridStyles.extraSmall.numberSize}px`};
+    min-height: ${`${gridStyles.extraSmall.numberSize}px`};
+    min-width: ${`${gridStyles.extraSmall.numberSize}px`};
+  }
+
   background: #fff;
   border: 1px solid #999;
   border-radius: 4px;

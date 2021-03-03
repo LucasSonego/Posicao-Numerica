@@ -13,4 +13,11 @@ export const gridStyles = {
     slotPadding: 3,
     numberSize: 48,
   },
+  extraSmall: {
+    gridGap: 3,
+    gridPadding: 5,
+    slotSize: 50,
+    slotPadding: 0,
+    numberSize: 48,
+  },
 };

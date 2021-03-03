@@ -17,6 +17,11 @@ export const Container = styled.div`
       padding: ${`${gridStyles.small.gridPadding}px`};
     `}
 
+  @media (max-device-height : 670px) and (orientation: landscape) {
+    grid-gap: ${`${gridStyles.extraSmall.gridGap}px`};
+    padding: ${`${gridStyles.extraSmall.gridPadding}px`};
+  }
+
   ${props =>
     props.showCorrectNumbers
       ? css`

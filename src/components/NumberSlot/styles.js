@@ -19,6 +19,14 @@ export const Container = styled.div`
       padding: ${`${gridStyles.small.slotPadding}px`};
     `}
 
+  @media (max-device-height : 670px) and (orientation: landscape) {
+    height: ${`${gridStyles.extraSmall.slotSize}px`};
+    width: ${`${gridStyles.extraSmall.slotSize}px`};
+    min-height: ${`${gridStyles.extraSmall.slotSize}px`};
+    min-width: ${`${gridStyles.extraSmall.slotSize}px`};
+    padding: ${`${gridStyles.extraSmall.slotPadding}px`};
+  }
+
   background-color: #f5f6fa;
   display: flex;
   align-items: center;
