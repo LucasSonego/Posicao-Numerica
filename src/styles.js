@@ -70,7 +70,7 @@ export const Container = styled.div`
           }
         `}
   .modal-content {
-    height: 150px;
+    height: min-content;
     text-align: center;
     display: flex;
     flex-direction: column;

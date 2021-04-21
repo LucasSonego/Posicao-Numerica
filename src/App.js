@@ -11,6 +11,7 @@ import NumberSlotsContainer from "./components/NumberSlotsContainer";
 import Modal from "./components/Modal";
 import dragEndController from "./controllers/dragEndController";
 import dragStartController from "./controllers/dragStartController";
+import ModalForm from "./components/ModalForm";
 
 function App() {
   const DEFAULT_SLOT_AMOUNT = 50;
@@ -23,6 +24,7 @@ function App() {
   const [dragging, setDragging] = useState(null);
   const [allSlotsCorrect, setAllSlotsCorrect] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
+  const [resultSent, setResultSent] = useState(false);
 
   const [startTime, setStartTime] = useState();
   const [endTime, setEndTime] = useState();
@@ -56,6 +58,8 @@ function App() {
   }
 
   function clearGrid(size) {
+    setResultSent(false);
+
     let slotAmount;
     if (size) {
       slotAmount = size;
@@ -86,6 +90,7 @@ function App() {
     if (minutes > 0) {
       fixedTime = fixedTime - minutes * 60;
     }
+    if (fixedTime < 10) fixedTime = `0${fixedTime}`;
     return `${minutes}:${fixedTime}`;
   }
 
@@ -113,6 +118,14 @@ function App() {
           <div className="modal-content">
             <h3>Atividade completa!</h3>
             <h4>Tempo: {formatTime((endTime - startTime) / 1000)}</h4>
+            <div className="form">
+              <ModalForm
+                time={formatTime((endTime - startTime) / 1000)}
+                size={slots.length}
+                resultSent={resultSent}
+                setResultSent={setResultSent}
+              />
+            </div>
             <div className="buttons">
               <button
                 className="restart"
